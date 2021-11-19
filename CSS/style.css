@@ -27,15 +27,15 @@ body {
 }
 
 .quote-text {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 
-.long-quote {
+.long-text {
   font-size: 2rem;
 }
 
 .fa-quote-left {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 .quote-author {

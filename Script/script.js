@@ -26,13 +26,47 @@ function randomQuote() {
 // Render quotes
 function renderQuote(data) {
   const quotes = document.querySelector("#quote");
-  const author = document.querySelector("#author");
+  const authors = document.querySelector("#author");
+
   quotes.textContent = data.text;
-  author.innerText = data.author;
+
+  //  While author name is missing
+  if (!data.author) {
+    authors.innerText = "Unknown";
+  } else {
+    authors.innerText = data.author;
+  }
+
+  textControl(data);
+}
+
+// Tweet quote
+
+function quoteTweet() {
+  const twitterBtn = document.querySelector(".twitter-button");
+  const quotes = document.querySelector("#quote");
+  const authors = document.querySelector("#author");
+  twitterBtn.addEventListener("click", () => {
+    const urlTwitter = `https://twitter.com/intent/tweet?text=${authors.textContent} - ${quotes.textContent}`;
+    window.open(urlTwitter, '_blank')
+  });
+}
+
+// Control text size if quote is too long
+
+function textControl(data) {
+  const textQuote = document.querySelector(".quote-text");
+  let textLen = data.text.length;
+  if (textLen > 50) {
+    textQuote.classList.add("long-text");
+  } else {
+    textQuote.classList.remove("long-text");
+  }
 }
 
 function main() {
   fetchQuotes();
   randomQuote();
+  quoteTweet()
 }
 main();
