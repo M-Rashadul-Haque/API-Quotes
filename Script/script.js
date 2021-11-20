@@ -2,10 +2,12 @@ let apiData = {};
 
 // Fetch quotes
 async function fetchQuotes() {
+    showLoader()
   const url = "https://type.fit/api/quotes";
   try {
     const response = await fetch(url);
     const data = await response.json();
+    hideLoader ()
     apiData = data;
   } catch (error) {
     console.log(error);
@@ -62,6 +64,24 @@ function textControl(data) {
   } else {
     textQuote.classList.remove("long-text");
   }
+}
+
+// Preloader
+
+function showLoader(){
+    const preLoad = document.querySelector(".preloader")
+    const container = document.querySelector(".container")
+    preLoad.hidden = false;
+    container.hidden = true;
+
+}
+
+
+function hideLoader (){
+    const preLoad = document.querySelector(".preloader")
+    const container = document.querySelector(".container")
+    preLoad.hidden = true;
+    container.hidden = false; 
 }
 
 function main() {
